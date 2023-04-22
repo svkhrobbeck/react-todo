@@ -84,7 +84,7 @@ export const Todo = () => {
       <TodoForm handleAddTodo={handleAddTodo} />
       <p className="text-black text-center mt-2">
         {todos.length}
-        {todos.length ? " todos" : " todo"}
+        {todos.length >= 2 ? " todos" : " todo"}
       </p>
       <List
         todos={todos}
