@@ -4,17 +4,16 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 100;
   padding: 20px;
-  justify-content: center;
-  align-items: center;
   display: none;
 
   &.my-modal--show {
-    display: flex;
+    display: block;
   }
 }
 
 .my-modal__dialog {
   max-width: 600px;
+  margin: 250px auto 0;
   width: 100%;
 }
 
