@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { List } from "../list/List";
-import { v4 as uuidv4 } from "uuid";
 import { Modal } from "../modal/Modal";
-import "./Todos.scss";
 import { EditModalInner } from "../edit-modal-inner/EditModalInner";
 import { ModalInner } from "../modal-inner/ModalInner";
 import { TodoForm } from "../todo-form/TodoForm";
+import { v4 as uuidv4 } from "uuid";
+import "./Todos.scss";
 
 export const Todo = () => {
   const [todos, setTodos] = useState(
