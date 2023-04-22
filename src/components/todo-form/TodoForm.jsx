@@ -4,7 +4,7 @@ export const TodoForm = ({ handleAddTodo }) => {
   const item = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!item.current.value) return;
+    if (!item.current.value.trim()) return;
 
     handleAddTodo(item.current.value);
     e.target.reset();
