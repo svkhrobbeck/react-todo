@@ -5,10 +5,9 @@ import { Modal } from "../modal/Modal";
 import "./Todos.scss";
 import { EditModalInner } from "../edit-modal-inner/EditModalInner";
 import { ModalInner } from "../modal-inner/ModalInner";
+import { TodoForm } from "../todo-form/TodoForm";
 
 export const Todo = () => {
-  const item = useRef(null);
-
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem("todos"))
       ? JSON.parse(localStorage.getItem("todos"))
@@ -61,20 +60,15 @@ export const Todo = () => {
     handleModalClose(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!item.current.value) return;
-
+  const handleAddTodo = (item) => {
     const itemData = {
-      title: item.current.value,
+      title: item,
       isDone: false,
       id: uuidv4(),
     };
 
     const newTodos = [...todos, itemData];
     setTodos(newTodos);
-    e.target.reset();
   };
 
   const handleTodoEdit = (id, title) => {
@@ -87,15 +81,7 @@ export const Todo = () => {
 
   return (
     <>
-      <form className="d-flex pt-5" onSubmit={handleSubmit}>
-        <input
-          className="form-control"
-          type="text"
-          placeholder="Enter a new todo"
-          ref={item}
-        />
-        <button className="ms-2 btn flex-shrink-0 btn-danger" type="submit">Add Todo</button>
-      </form>
+      <TodoForm handleAddTodo={handleAddTodo} />
       <p className="text-black text-center mt-2">{todos.length}</p>
       <List
         todos={todos}
