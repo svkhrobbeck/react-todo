@@ -82,7 +82,10 @@ export const Todo = () => {
   return (
     <>
       <TodoForm handleAddTodo={handleAddTodo} />
-      <p className="text-black text-center mt-2">{todos.length}</p>
+      <p className="text-black text-center mt-2">
+        {todos.length}
+        {todos.length ? " todos" : " todo"}
+      </p>
       <List
         todos={todos}
         handleToggle={handleToggle}
