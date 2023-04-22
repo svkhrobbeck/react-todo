@@ -87,13 +87,14 @@ export const Todo = () => {
 
   return (
     <>
-      <form className="pt-5" onSubmit={handleSubmit}>
+      <form className="d-flex pt-5" onSubmit={handleSubmit}>
         <input
           className="form-control"
           type="text"
           placeholder="Enter a new todo"
           ref={item}
         />
+        <button className="ms-2 btn flex-shrink-0 btn-danger" type="submit">Add Todo</button>
       </form>
       <p className="text-black text-center mt-2">{todos.length}</p>
       <List
