@@ -15,7 +15,8 @@ export const EditModalInner = ({
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.current.value.trim()) handleTodoEdit(itemId, title.current.value);
+    if (!title.current.value.trim()) return;
+    handleTodoEdit(itemId, title.current.value.trim());
   };
   return (
     <form onSubmit={handleSubmit}>

@@ -6,7 +6,7 @@ export const TodoForm = ({ handleAddTodo }) => {
     e.preventDefault();
     if (!item.current.value.trim()) return;
 
-    handleAddTodo(item.current.value);
+    handleAddTodo(item.current.value.trim());
     e.target.reset();
   };
 
