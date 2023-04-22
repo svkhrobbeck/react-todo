@@ -1,18 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 export const EditModalInner = ({
   itemId,
   handleTodoEdit,
   handleModalClose,
+  todos,
+  editModal,
 }) => {
   const title = useRef(null);
 
+  if (editModal) {
+    const item = todos.find((item) => item.id === itemId)?.title;
+    title.current.value = item;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.current.value) return;
-
-    handleTodoEdit(itemId, title.current.value);
-    e.target.reset();
+    if (title.current.value) handleTodoEdit(itemId, title.current.value);
   };
   return (
     <form onSubmit={handleSubmit}>

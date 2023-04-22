@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { List } from "../list/List";
 import { v4 as uuidv4 } from "uuid";
 import { Modal } from "../modal/Modal";
@@ -18,10 +18,12 @@ export const Todo = () => {
   const [editModal, setEditModal] = useState(false);
   const [itemId, setItemId] = useState(null);
 
-  localStorage.setItem(
-    "todos",
-    JSON.stringify(todos) ? JSON.stringify(todos) : "[]"
-  );
+  useEffect(() => {
+    localStorage.setItem(
+      "todos",
+      JSON.stringify(todos) ? JSON.stringify(todos) : "[]"
+    );
+  }, [todos]);
 
   const handleToggle = (id) => {
     const tempTodos = [...todos];
@@ -111,6 +113,8 @@ export const Todo = () => {
           itemId={itemId}
           handleTodoEdit={handleTodoEdit}
           handleModalClose={handleModalClose}
+          todos={todos}
+          editModal={editModal}
         />
       </Modal>
     </>
