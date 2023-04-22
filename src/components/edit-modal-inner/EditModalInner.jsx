@@ -27,7 +27,6 @@ export const EditModalInner = ({
         ref={title}
       />
       <div className="d-flex justify-content-between">
-        <button className="btn btn-primary">Save</button>
         <button
           className="btn btn-success"
           type="button"
@@ -35,6 +34,7 @@ export const EditModalInner = ({
         >
           close
         </button>
+        <button className="btn btn-primary">Save</button>
       </div>
     </form>
   );
