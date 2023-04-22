@@ -4,7 +4,7 @@ import "./List.scss";
 export const List = ({ todos, handleToggle, handleModalOpen }) => {
   return (
     <ul>
-      {todos &&
+      {todos.length ?
         todos.map((item) => (
           <Item
             key={item.id}
@@ -12,7 +12,7 @@ export const List = ({ todos, handleToggle, handleModalOpen }) => {
             handleToggle={handleToggle}
             handleModalOpen={handleModalOpen}
           />
-        ))}
+        )): <h2 className="text-black text-center">Todos not found!</h2>}
     </ul>
   );
 };
