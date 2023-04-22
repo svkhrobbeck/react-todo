@@ -17,12 +17,14 @@ export const Todo = () => {
   const [editModal, setEditModal] = useState(false);
   const [itemId, setItemId] = useState(null);
 
-  useEffect(() => {
+  const setTodosStorage = () => {
     localStorage.setItem(
       "todos",
       JSON.stringify(todos) ? JSON.stringify(todos) : "[]"
     );
-  }, [todos]);
+  };
+
+  useEffect(setTodosStorage, [todos]);
 
   const handleToggle = (id) => {
     const tempTodos = [...todos];
@@ -31,10 +33,7 @@ export const Todo = () => {
     if (typeof index !== "number") return;
     tempTodos[index].isDone = !tempTodos[index].isDone;
     setTodos(tempTodos);
-    localStorage.setItem(
-      "todos",
-      JSON.stringify(todos) ? JSON.stringify(todos) : "[]"
-    );
+    setTodosStorage();
   };
 
   const handleModalOpen = (id, which) => {
@@ -77,6 +76,7 @@ export const Todo = () => {
 
     tempTodos[index].title = title;
     handleModalClose(false);
+    setTodosStorage();
   };
 
   return (
